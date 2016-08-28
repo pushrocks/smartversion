@@ -1,0 +1,19 @@
+{
+  "name": "smartversion",
+  "version": "1.0.0",
+  "description": "handle npm versions the smart way",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "(npmts)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/pushrocks/smartversion.git"
+  },
+  "author": "Lossless GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/pushrocks/smartversion/issues"
+  },
+  "homepage": "https://gitlab.com/pushrocks/smartversion#README"
+}
