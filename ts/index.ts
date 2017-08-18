@@ -34,10 +34,24 @@ export class SmartVersion {
     return this.semver.patch
   }
 
+  greaterThan (smartVersionArg: SmartVersion) {
+    return this.greaterThanString(smartVersionArg.versionString)
+  }
+
+  /**
+   * compares the version of this against a string
+   */
   greaterThanString (versionStringArg) {
     return plugins.semver.gt(this.versionString, versionStringArg)
   }
 
+  lessThan (smartVersionArg: SmartVersion) {
+    return this.lessThanString(smartVersionArg.versionString)
+  }
+
+  /**
+   * compares the version of this against a string
+   */
   lessThanString (versionStringArg) {
     return plugins.semver.lt(this.versionString, versionStringArg)
   }
