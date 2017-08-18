@@ -4,6 +4,7 @@ import { SemVer } from 'semver'
 
 export class SmartVersion {
   semver: SemVer
+  versionString: string
   update = {
     patch: () => {
       this.semver.patch = this.semver.patch + 1
@@ -18,6 +19,7 @@ export class SmartVersion {
 
   constructor (semVerStringArg: string) {
     this.semver = new plugins.semver.SemVer(semVerStringArg)
+    this.versionString = this.semver.version
   }
 
   get major () {
@@ -30,6 +32,14 @@ export class SmartVersion {
 
   get patch () {
     return this.semver.patch
+  }
+
+  greaterThanString (versionStringArg) {
+    return plugins.semver.gt(this.versionString, versionStringArg)
+  }
+
+  lessThanString (versionStringArg) {
+    return plugins.semver.lt(this.versionString, versionStringArg)
   }
 
 }
