@@ -1,6 +1,6 @@
 {
   "name": "smartversion",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "handle semver with easy",
   "main": "dist/index.js",
