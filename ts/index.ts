@@ -3,9 +3,9 @@ import * as plugins from './smartversion.plugins';
 import { SemVer } from 'semver';
 
 export class SmartVersion {
-  semver: SemVer;
-  versionString: string;
-  update = {
+  public semver: SemVer;
+  public versionString: string;
+  public update = {
     patch: () => {
       this.semver.patch = this.semver.patch + 1;
     },
@@ -22,37 +22,37 @@ export class SmartVersion {
     this.versionString = this.semver.version;
   }
 
-  get major() {
+  public get major() {
     return this.semver.major;
   }
 
-  get minor() {
+  public get minor() {
     return this.semver.minor;
   }
 
-  get patch() {
+  public get patch() {
     return this.semver.patch;
   }
 
-  greaterThan(smartVersionArg: SmartVersion) {
+  public greaterThan(smartVersionArg: SmartVersion) {
     return this.greaterThanString(smartVersionArg.versionString);
   }
 
   /**
    * compares the version of this against a string
    */
-  greaterThanString(versionStringArg) {
+  public greaterThanString(versionStringArg) {
     return plugins.semver.gt(this.versionString, versionStringArg);
   }
 
-  lessThan(smartVersionArg: SmartVersion) {
+  public lessThan(smartVersionArg: SmartVersion) {
     return this.lessThanString(smartVersionArg.versionString);
   }
 
   /**
    * compares the version of this against a string
    */
-  lessThanString(versionStringArg) {
+  public lessThanString(versionStringArg) {
     return plugins.semver.lt(this.versionString, versionStringArg);
   }
 }
