@@ -5,5 +5,15 @@
   },
   "npmts": {
     "coverageTreshold": 60
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "pushrocks",
+      "gitrepo": "smartversion",
+      "shortDescription": "handle semver with easy",
+      "npmPackagename": "@pushrocks/smartversion",
+      "license": "MIT"
+    }
   }
 }
