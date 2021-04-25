@@ -4,11 +4,12 @@
     "npmAccessLevel": "public"
   },
   "gitzone": {
+    "projectType": "npm",
     "module": {
       "githost": "gitlab.com",
       "gitscope": "pushrocks",
       "gitrepo": "smartversion",
-      "shortDescription": "handle semver with easy",
+      "shortDescription": "handle semver with ease",
       "npmPackagename": "@pushrocks/smartversion",
       "license": "MIT"
     }

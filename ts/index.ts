@@ -14,7 +14,7 @@ export class SmartVersion {
     },
     major: () => {
       this.semver.major = this.semver.major + 1;
-    }
+    },
   };
 
   constructor(semVerStringArg: string) {
