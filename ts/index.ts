@@ -1,9 +1,12 @@
 import * as plugins from './smartversion.plugins';
 
-import { SemVer } from 'semver';
-
 export class SmartVersion {
-  public semver: SemVer;
+  public static fromFuzzyString(fuzzyString): SmartVersion {
+    return new SmartVersion(plugins.semver.minVersion(fuzzyString).version, fuzzyString);
+  }
+
+  public originalVersionString: string;
+  public semver: plugins.semver.SemVer;
   public versionString: string;
   public update = {
     patch: () => {
@@ -17,7 +20,8 @@ export class SmartVersion {
     },
   };
 
-  constructor(semVerStringArg: string) {
+  constructor(semVerStringArg: string, originalStringArg?: string) {
+    this.originalVersionString = originalStringArg;
     this.semver = new plugins.semver.SemVer(semVerStringArg);
     this.versionString = this.semver.version;
   }
@@ -54,5 +58,25 @@ export class SmartVersion {
    */
   public lessThanString(versionStringArg) {
     return plugins.semver.lt(this.versionString, versionStringArg);
+  }
+
+  /**
+   * tries to get the best match from a range of available versions
+   */
+  public getBestMatch(availableVersions: string[]): string {
+    let bestMatchingVersion: string;
+    for (const versionArg of availableVersions) {
+      if (!plugins.semver.satisfies(versionArg, this.originalVersionString)) {
+        continue;
+      }
+      if(!bestMatchingVersion) {
+        bestMatchingVersion = versionArg;
+      } else {
+        if (plugins.semver.lt(bestMatchingVersion, versionArg)) {
+          bestMatchingVersion = versionArg;
+        }
+      }
+    }
+    return bestMatchingVersion;
   }
 }
